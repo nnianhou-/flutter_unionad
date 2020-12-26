@@ -19,6 +19,8 @@ A new flutter plugin project.
   s.platform = :ios, '8.0'
   s.dependency 'Bytedance-UnionAD', '~> 3.3.6.2'
 
+  
+
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'VALID_ARCHS[sdk=iphonesimulator*]' => 'x86_64' }
   s.swift_version = '5.0'
