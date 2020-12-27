@@ -104,6 +104,7 @@ public class FlutterUnionadPlugin : FlutterPlugin, MethodCallHandler, ActivityAw
             //激励视频广告
         } else if (call.method == "loadRewardVideoAd") {
             RewardVideoAd.init(mActivity!!, mActivity!!, call.arguments as Map<String?, Any?>)
+            
             //插屏广告
         } else if (call.method == "interactionAd") {
             val mCodeId = call.argument<String>("androidCodeId")

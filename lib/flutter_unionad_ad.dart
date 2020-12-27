@@ -15,6 +15,8 @@ const MethodChannel _channel = const MethodChannel('flutter_unionad');
 const EventChannel adeventEvent =
     EventChannel("com.gstory.flutter_unionad/adevent");
 
+
+
 ///sdk注册初始化
 Future<bool> register({
   @required String iosAppId,
@@ -48,6 +50,8 @@ Future<bool> register({
           ]
   });
 }
+
+
 
 ///请求权限
 Future<bool> requestPermissionIfNecessary() async {
@@ -103,6 +107,8 @@ Widget splashAdView(
   );
 }
 
+
+
 ///信息流广告
 Widget nativeAdView(
     {String mIsExpress,
@@ -123,6 +129,8 @@ Widget nativeAdView(
   );
 }
 
+
+
 ///插屏广告
 Future<bool> interactionAd({
   bool mIsExpress,
@@ -141,6 +149,8 @@ Future<bool> interactionAd({
     "expressViewHeight": expressViewHeight ?? 300,
   });
 }
+
+
 
 ///个性化模板插屏广告
 Widget interactionAdView(
@@ -167,6 +177,10 @@ Widget interactionAdView(
   }
   return Container();
 }
+
+
+
+
 
 ///激励视频广告
 Future<bool> loadRewardVideoAd({
@@ -197,6 +211,8 @@ Future<bool> loadRewardVideoAd({
   });
 }
 
+
+
 ///draw视频广告
 Widget drawFeedAdView({
   bool mIsExpress,
@@ -217,6 +233,7 @@ Widget drawFeedAdView({
     callBack: callBack,
   );
 }
+
 
 ///个性化模板全屏广告
 Future<bool> fullScreenVideoAd(

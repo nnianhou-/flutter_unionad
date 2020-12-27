@@ -1,6 +1,5 @@
 import 'dart:core';
 
-import 'dart:core';
 
 class FlutterUnionadState {
   String type;

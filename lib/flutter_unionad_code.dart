@@ -41,6 +41,16 @@ const String rewardAmount = "rewardAmount";
 //奖励名称
 const String rewardName = "rewardName";
 
+const String rewardAdState = "rewardAdState";
+
+///  激励firstLoad
+const String rewardLoad = "rewardLoad";
+//// 激励开始
+const String rewardShow = "rewardShow";
+//// 激励点击
+///
+const String rewardClick = "rewardClick";
+
 ///全屏视频广告广告
 const String fullVideoType = "fullVideoType";
 //广告显示

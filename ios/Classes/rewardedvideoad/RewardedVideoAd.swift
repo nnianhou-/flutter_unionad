@@ -45,15 +45,41 @@ extension RewardedVideoAd: BUNativeExpressRewardedVideoAdDelegate {
     public func nativeExpressRewardedVideoAdDidLoad(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd) {
         self.bURewardedVideoAd!.show(fromRootViewController: MyUtils.getVC())
         LogUtil.logInstance.printLog(message: "激励广告加载成功")
+
+       let map : NSDictionary = ["adType":"rewardAd",
+                                  "rewardAdState" : "rewardLoad",
+                                  "rewardVerify":true,
+                                  "rewardAmount":self.rewardModel!.rewardAmount,
+                                  "rewardName":self.rewardModel!.rewardName ?? ""]
+        SwiftFlutterUnionadPlugin.event!.sendEvent(event: map)
     }
     
     public func nativeExpressRewardedVideoAdDidClose(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd) {
         LogUtil.logInstance.printLog(message: "激励广告关闭")
+        
+        let map : NSDictionary = ["adType":"rewardAd",
+                                   "rewardAdState":"rewardShow",
+                                   "rewardVerify":true,
+                                   "rewardAmount":self.rewardModel!.rewardAmount,
+                                   "rewardName":self.rewardModel!.rewardName ?? ""]
+        SwiftFlutterUnionadPlugin.event!.sendEvent(event: map)
     }
     
     public func nativeExpressRewardedVideoAd(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd, didFailWithError error: Error?) {
         LogUtil.logInstance.printLog(message: "激励广告加载失败")
         LogUtil.logInstance.printLog(message: error)
+    }
+    
+    
+    public func nativeExpressRewardedVideoAdDidClick(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd) {
+        LogUtil.logInstance.printLog(message: "激励视频点击")
+        let map : NSDictionary = ["adType":"rewardAd",
+                                   "rewardAdState":"rewardClick",
+                                   "rewardVerify":true,
+                                   "rewardAmount":self.rewardModel!.rewardAmount,
+                                   "rewardName":self.rewardModel!.rewardName ?? ""]
+        SwiftFlutterUnionadPlugin.event!.sendEvent(event: map)
+      
     }
     
     public func nativeExpressRewardedVideoAdDidClickSkip(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd) {
@@ -70,11 +96,14 @@ extension RewardedVideoAd: BUNativeExpressRewardedVideoAdDelegate {
     }
     
     public func nativeExpressRewardedVideoAdDidPlayFinish(_ rewardedVideoAd: BUNativeExpressRewardedVideoAd, didFailWithError error: Error?) {
-        LogUtil.logInstance.printLog(message: "激励广告完成")
-        let map : NSDictionary = ["adType":"rewardAd",
-                                  "rewardVerify":true,
-                                  "rewardAmount":self.rewardModel!.rewardAmount,
-                                  "rewardName":self.rewardModel!.rewardName ?? ""]
-        SwiftFlutterUnionadPlugin.event!.sendEvent(event: map)
+//        LogUtil.logInstance.printLog(message: "激励广告完成")
+//        let map : NSDictionary = ["adType":"rewardAd",
+//                                  "rewardVerify":true,
+//                                  "rewardAmount":self.rewardModel!.rewardAmount,
+//                                  "rewardName":self.rewardModel!.rewardName ?? ""]
+//        SwiftFlutterUnionadPlugin.event!.sendEvent(event: map)
     }
+
+
+
 }

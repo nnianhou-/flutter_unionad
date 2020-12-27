@@ -16,6 +16,8 @@ import com.gstory.flutter_unionad.UIUtils
  * @Author: gstory0404@gmail
  * @CreateDate: 2020/8/20 18:46
  */
+
+
 object RewardVideoAd {
     private val TAG = "RewardVideoAdActivity"
 
@@ -25,6 +27,7 @@ object RewardVideoAd {
     lateinit var mTTAdNative: TTAdNative
     private var mttRewardVideoAd: TTRewardVideoAd? = null
     private var mIsLoaded = false //视频是否加载完成
+
 
     //参数
     private var mIsExpress: Boolean = false //是否请求模板广告
@@ -127,14 +130,22 @@ object RewardVideoAd {
                 mttRewardVideoAd?.setRewardAdInteractionListener(object : RewardAdInteractionListener {
                     override fun onAdShow() {
                         Log.e(TAG, "rewardVideoAd show")
+                        var map: MutableMap<String, Any?> = mutableMapOf("adType" to "rewardAd", "rewardAdState" to "rewardLoad")
+                        FlutterUnionadEventPlugin.sendContent(map)
+                        //rewardLoad
                     }
 
                     override fun onAdVideoBarClick() {
                         Log.e(TAG, "rewardVideoAd bar click")
+                        var map: MutableMap<String, Any?> = mutableMapOf("adType" to "rewardAd", "rewardAdState" to "rewardClick")
+                        FlutterUnionadEventPlugin.sendContent(map)
+
                     }
 
                     override fun onAdClose() {
                         Log.e(TAG, "rewardVideoAd close")
+                        var map: MutableMap<String, Any?> = mutableMapOf("adType" to "rewardAd", "rewardAdState" to "rewardShow")
+                        FlutterUnionadEventPlugin.sendContent(map)
                     }
 
                     override fun onVideoError() {
@@ -147,8 +158,8 @@ object RewardVideoAd {
 
                     override fun onRewardVerify(p0: Boolean, p1: Int, p2: String?, p3: Int, p4: String?) {
                         Log.e(TAG, "verify: $p0 amount:$p1 name:$p2 p3:$p3 p4:$p4")
-                        var map: MutableMap<String, Any?> = mutableMapOf("adType" to "rewardAd", "rewardVerify" to p0, "rewardAmount" to p1, "rewardName" to p2)
-                        FlutterUnionadEventPlugin.sendContent(map)
+                      //  var map: MutableMap<String, Any?> = mutableMapOf("adType" to "rewardAd", "rewardVerify" to p0, "rewardAmount" to p1, "rewardName" to p2)
+                      //  FlutterUnionadEventPlugin.sendContent(map)
                     }
 
                     override fun onSkippedVideo() {
